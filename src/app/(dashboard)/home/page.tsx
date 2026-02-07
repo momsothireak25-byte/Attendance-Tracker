@@ -1,84 +1,119 @@
+import CreateClassDialog from "@/components/dashboard/create-class-dialog"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function DashboardPage() {
   return (
-    <div>
+    <div className="p-8 w-full">
 
       {/* HEADER */}
       <h1 className="text-3xl font-semibold mb-8">
-        Welcome Back, Prof.Heng
+        Welcome Back, Prof. Heng
       </h1>
 
-      {/* TOP CARDS */}
-      <div className="grid grid-cols-3 gap-6 mb-10"> 
 
-        {/* CREATE */}
-       <button
-         className="bg-blue-600 text-white p-6 rounded-xl text-left w-full
-         hover:bg-blue-700 hover:shadow-xl hover:-translate-y-1
-         active:translate-y-0 active:shadow-md
-         transition-all duration-200"
->
-         <div className="text-3xl mb-3">＋</div>
+      {/* TOP SECTION */}
+      <div className="grid md:grid-cols-3 gap-6 mb-10">
 
-         <p className="text-lg font-semibold">
-           Create New Class
-         </p>
-
-         <p className="text-sm text-blue-100">
-           Set up a new class
-         </p>
-       </button>
+        {/* CREATE CLASS DIALOG */}
+        <CreateClassDialog />
 
 
         {/* TOTAL CLASSES */}
-        <div className="bg-blue-600 text-white p-6 rounded-xl">
-          <p className="text-sm text-blue-200">Total Classes</p>
-          <p className="text-3xl font-bold">5</p>
-        </div>
+        <Card className="rounded-2xl shadow-sm">
+          <CardHeader>
+            <CardTitle className="text-sm text-gray-500">
+              Total Classes
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <p className="text-4xl font-bold">5</p>
+          </CardContent>
+        </Card>
+
 
         {/* TOTAL STUDENTS */}
-        <div className="bg-blue-600 text-white p-6 rounded-xl">
-          <p className="text-sm text-blue-200">Total Students</p>
-          <p className="text-3xl font-bold">122</p>
-        </div>
+        <Card className="rounded-2xl shadow-sm ">
+          <CardHeader>
+            <CardTitle className="text-sm text-gray-500 ">
+              Total Students
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <p className="text-4xl font-bold">122</p>
+          </CardContent>
+        </Card>
 
       </div>
+
+
 
       {/* UPCOMING CLASSES */}
-      <div className="bg-white rounded-xl p-6">
+      <Card className="rounded-2xl shadow-sm">
+        <CardHeader>
+          <CardTitle>
+            Upcoming Classes
+          </CardTitle>
+        </CardHeader>
 
-        <h2 className="text-lg font-semibold border-b pb-2 mb-4">
-          Upcoming Classes
-        </h2>
+        <CardContent className="space-y-4">
 
-        <div className="space-y-4">
+          <ClassCard
+            color="bg-pink-200"
+            title="Software Engineering - B13"
+            time="08:30 - 10:00 AM"
+            location="KIT Phnom Penh Campus"
+          />
 
-          <ClassCard color="bg-pink-200" />
-          <ClassCard color="bg-yellow-200" />
-          <ClassCard color="bg-green-200" />
+          <ClassCard
+            color="bg-yellow-200"
+            title="Web Development"
+            time="10:30 - 12:00 PM"
+            location="Room A204"
+          />
 
-        </div>
+          <ClassCard
+            color="bg-green-200"
+            title="Database Systems"
+            time="01:00 - 02:30 PM"
+            location="Room B101"
+          />
 
-      </div>
+        </CardContent>
+      </Card>
 
     </div>
   )
 }
 
 
-function ClassCard({ color }: { color: string }) {
+
+function ClassCard({
+  color,
+  title,
+  time,
+  location,
+}: {
+  color: string
+  title: string
+  time: string
+  location: string
+}) {
   return (
-    <div className={`${color} p-4 rounded-lg`}>
-      <p className="font-semibold">
-        Software Engineering - B13
+    <div
+      className={`${color} p-5 rounded-xl hover:scale-[1.02] transition`}
+    >
+      <p className="font-semibold text-lg">
+        {title}
       </p>
 
       <p className="text-sm">
-        08:30 - 10:00 AM
+        {time}
       </p>
 
       <p className="text-sm">
-        KIT Phnom Penh Campus
+        {location}
       </p>
     </div>
   )
