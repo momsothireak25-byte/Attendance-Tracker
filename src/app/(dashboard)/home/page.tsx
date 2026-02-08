@@ -1,6 +1,7 @@
 import CreateClassDialog from "@/components/dashboard/create-class-dialog"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
+
 export default function DashboardPage() {
   return (
     <div className="p-8 w-full">
